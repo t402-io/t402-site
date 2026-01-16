@@ -1,24 +1,44 @@
-# ⚠️ This Repository Has Moved
+# T402 Site
 
-This website has been migrated to the **t402 monorepo**.
+Marketing website for T402 - The Official Payment Protocol for USDT.
 
-## New Location
+**Live site:** https://t402.io
 
-👉 **https://github.com/t402-io/t402**
+## Tech Stack
 
-The website code is now located at:
+- **Framework:** Next.js 16 with App Router
+- **Styling:** Tailwind CSS 4
+- **Deployment:** Cloudflare Pages (static export)
+- **Package Manager:** pnpm
+
+## Development
+
+```bash
+# Install dependencies
+pnpm install
+
+# Start development server
+pnpm dev
+
+# Build for production
+pnpm build
+
+# Start production server
+pnpm start
 ```
-t402/docs/
+
+## Deployment
+
+The site automatically deploys to Cloudflare Pages on push to `main` branch.
+
+### Manual Deployment
+
+```bash
+pnpm build
+wrangler pages deploy out --project-name t402-site
 ```
 
-## Live Site
+## Related Repositories
 
-🌐 https://t402.io
-
-## Documentation
-
-📚 https://docs.t402.io
-
----
-
-> **Note**: This repository is archived and no longer maintained. Please use the monorepo for all contributions and issues.
+- [t402-io/t402](https://github.com/t402-io/t402) - Main monorepo with SDKs
+- [T402 Documentation](https://docs.t402.io)

@@ -42,4 +42,3 @@ wrangler pages deploy out --project-name t402-site
 
 - [t402-io/t402](https://github.com/t402-io/t402) - Main monorepo with SDKs
 - [T402 Documentation](https://docs.t402.io)
-# Test auto-merge 2026年 1月17日 星期六 00時25分02秒 CST

@@ -16,14 +16,14 @@ interface Article {
 
 const articles: Article[] = [
   {
-    slug: "x402-v2-launch",
-    title: "Introducing t402 V2: Evolving the Standard for Internet-native Payments",
+    slug: "t402-launch",
+    title: "Introducing T402: The Official Payment Protocol for USDT",
     description:
-      "Building on six months of real-world use, t402 V2 expands the protocol beyond single-call, exact payments with wallet-based identity, automatic API discovery, and modular SDK architecture.",
-    date: "December 11, 2025",
-    authors: ["Erik Reppel", "Carson Roscoe", "Josh Nickerson"],
-    image: "/images/blog_intro.png",
-    tags: ["Protocol", "V2", "Announcement"],
+      "T402 brings HTTP-native stablecoin payments to the internet. Zero fees, instant settlement, and support for 10 blockchain networks including Ethereum, TON, TRON, and Solana.",
+    date: "January 15, 2026",
+    authors: ["T402 Team"],
+    image: "/images/t402-hero.svg",
+    tags: ["Protocol", "Launch", "Announcement"],
   },
 ];
 

@@ -34,6 +34,7 @@ const footerLinks = {
     { label: "Chains", href: "/chains" },
     { label: "Features", href: "/features" },
     { label: "Playground", href: "/playground" },
+    { label: "Compare", href: "/compare" },
   ],
   developers: [
     { label: "Documentation", href: "https://docs.t402.io" },

@@ -106,6 +106,7 @@ const navLinks = [
   { href: "/features", label: "Features" },
   { href: "/use-cases", label: "Use Cases" },
   { href: "/playground", label: "Playground" },
+  { href: "/writing", label: "Writing" },
   { href: "https://docs.t402.io", label: "Docs", external: true },
 ];
 

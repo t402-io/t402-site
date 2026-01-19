@@ -159,7 +159,7 @@ export default function WritingClient() {
         </p>
         <div className="flex flex-wrap justify-center gap-4">
           <Link
-            href="https://t.me/+ijgZ6c_f0iA1MmY5"
+            href="https://t.me/t402_community"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 rounded-lg bg-brand px-6 py-3 text-base font-medium transition-colors hover:bg-brand-secondary"

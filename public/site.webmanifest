@@ -3,12 +3,12 @@
   "short_name": "t402",
   "icons": [
     {
-      "src": "/x402-icon-black.png",
+      "src": "/t402-icon-black.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "/x402-icon-black.png",
+      "src": "/t402-icon-black.png",
       "sizes": "512x512",
       "type": "image/png"
     }

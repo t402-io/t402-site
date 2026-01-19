@@ -51,7 +51,7 @@ const footerLinks = {
     },
     {
       label: "Whitepaper",
-      href: "/x402-whitepaper.pdf",
+      href: "/t402-whitepaper.pdf",
       external: true,
     },
     { label: "Blog", href: "/writing" },

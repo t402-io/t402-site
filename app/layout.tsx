@@ -33,12 +33,17 @@ export const metadata: Metadata = {
     "gasless",
   ],
   authors: [{ name: "T402" }],
+  metadataBase: new URL("https://t402.io"),
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
     title: "T402 - The Official Payment Protocol for USDT",
     description:
       "HTTP-native stablecoin payments across Ethereum, TON, TRON, and Solana. Zero fees. Instant settlement.",
     type: "website",
     siteName: "T402",
+    url: "https://t402.io",
   },
   twitter: {
     card: "summary_large_image",
@@ -50,6 +55,54 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
+};
+
+// JSON-LD Structured Data
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://t402.io/#organization",
+      name: "T402",
+      url: "https://t402.io",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://t402.io/logo.png",
+      },
+      sameAs: [
+        "https://github.com/t402-io/t402",
+        "https://x.com/AIT402Protocol",
+      ],
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://t402.io/#website",
+      url: "https://t402.io",
+      name: "T402",
+      description: "The Official Payment Protocol for USDT",
+      publisher: {
+        "@id": "https://t402.io/#organization",
+      },
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://t402.io/#software",
+      name: "T402 SDK",
+      applicationCategory: "DeveloperApplication",
+      operatingSystem: "Cross-platform",
+      offers: {
+        "@type": "Offer",
+        price: "0",
+        priceCurrency: "USD",
+      },
+      description:
+        "Open-source SDKs for HTTP-native stablecoin payments across multiple blockchains",
+      downloadUrl: "https://www.npmjs.com/package/@t402/core",
+      softwareVersion: "2.3.0",
+      programmingLanguage: ["TypeScript", "Python", "Go", "Java"],
+    },
+  ],
 };
 
 export const viewport: Viewport = {
@@ -72,6 +125,10 @@ export default function RootLayout({
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <meta name="apple-mobile-web-app-title" content="T402" />
         <link rel="manifest" href="/site.webmanifest" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
       </head>
       <body className="antialiased">
         <a href="#main-content" className="skip-to-content">

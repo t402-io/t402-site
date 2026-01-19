@@ -360,7 +360,7 @@ export function CodeExamples() {
               {activeLanguage === "typescript" && "npm install @t402/express @t402/fetch"}
               {activeLanguage === "python" && "pip install t402"}
               {activeLanguage === "go" && "go get github.com/t402-io/t402/go"}
-              {activeLanguage === "java" && "io.t402:t402-spring-boot-starter:1.1.0"}
+              {activeLanguage === "java" && "io.t402:t402:1.7.0"}
             </span>
           </div>
         </motion.div>

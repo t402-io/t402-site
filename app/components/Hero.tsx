@@ -104,10 +104,50 @@ function PolygonLogo({ className = "" }: { className?: string }) {
   );
 }
 
+function InkLogo({ className = "" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 32 32" className={className} aria-label="Ink">
+      <circle cx="16" cy="16" r="16" fill="#7B3FE4" />
+      <path
+        d="M16 8c-4.4 0-8 3.6-8 8s3.6 8 8 8 8-3.6 8-8-3.6-8-8-8zm0 14c-3.3 0-6-2.7-6-6s2.7-6 6-6 6 2.7 6 6-2.7 6-6 6z"
+        fill="#fff"
+      />
+      <circle cx="16" cy="16" r="3" fill="#fff" />
+    </svg>
+  );
+}
+
+function BerachainLogo({ className = "" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 32 32" className={className} aria-label="Berachain">
+      <circle cx="16" cy="16" r="16" fill="#FF8C00" />
+      <path
+        d="M16 7c-2 0-3.5 1-4 2.5-.5 1.5 0 3 1 4-2 .5-3 2-3 3.5 0 2 1.5 3.5 3.5 4 1 .5 2.5.5 3.5 0h2c2 0 3.5-1.5 3.5-3.5 0-1.5-1-3-3-3.5 1-1 1.5-2.5 1-4-.5-1.5-2-2.5-4-2.5h-.5z"
+        fill="#fff"
+      />
+    </svg>
+  );
+}
+
+function UnichainLogo({ className = "" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 32 32" className={className} aria-label="Unichain">
+      <circle cx="16" cy="16" r="16" fill="#FF007A" />
+      <path
+        d="M12 10v12c0 1.1.9 2 2 2h4c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2h-4c-1.1 0-2 .9-2 2zm3 2h2v8h-2v-8z"
+        fill="#fff"
+      />
+    </svg>
+  );
+}
+
 const chainLogos = [
   { name: "Ethereum", Logo: EthereumLogo },
   { name: "Base", Logo: BaseLogo },
   { name: "Arbitrum", Logo: ArbitrumLogo },
+  { name: "Ink", Logo: InkLogo },
+  { name: "Berachain", Logo: BerachainLogo },
+  { name: "Unichain", Logo: UnichainLogo },
   { name: "Polygon", Logo: PolygonLogo },
   { name: "TON", Logo: TonLogo },
   { name: "TRON", Logo: TronLogo },

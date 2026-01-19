@@ -168,14 +168,6 @@ export default function WritingClient() {
             Join Telegram
             <ArrowRightIcon />
           </Link>
-          <Link
-            href="https://x.com/AIT402Protocol"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-lg border border-border bg-background-tertiary px-6 py-3 text-base font-medium text-foreground transition-colors hover:bg-border"
-          >
-            Follow on X
-          </Link>
         </div>
       </motion.div>
     </div>

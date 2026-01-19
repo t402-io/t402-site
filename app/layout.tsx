@@ -72,7 +72,7 @@ const jsonLd = {
       },
       sameAs: [
         "https://github.com/t402-io/t402",
-        "https://x.com/AIT402Protocol",
+        "https://t.me/t402_io",
       ],
     },
     {

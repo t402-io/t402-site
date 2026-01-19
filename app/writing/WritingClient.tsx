@@ -22,7 +22,7 @@ const articles: Article[] = [
       "T402 brings HTTP-native stablecoin payments to the internet. Zero fees, instant settlement, and support for 10 blockchain networks including Ethereum, TON, TRON, and Solana.",
     date: "January 15, 2026",
     authors: ["T402 Team"],
-    image: "/images/t402-hero.svg",
+    image: "", // No image
     tags: ["Protocol", "Launch", "Announcement"],
   },
 ];
@@ -37,15 +37,21 @@ function ArticleCard({ article }: { article: Article }) {
     >
       <Link href={`/writing/${article.slug}`} className="block">
         <div className="overflow-hidden rounded-xl border border-border bg-background-secondary transition-all hover:border-border-secondary">
-          {/* Image */}
-          <div className="relative aspect-video overflow-hidden">
-            <Image
-              src={article.image}
-              alt={article.title}
-              fill
-              className="object-cover transition-transform duration-300 group-hover:scale-105"
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-            />
+          {/* Image or Placeholder */}
+          <div className="relative aspect-video overflow-hidden bg-gradient-to-br from-brand/20 to-background-tertiary">
+            {article.image ? (
+              <Image
+                src={article.image}
+                alt={article.title}
+                fill
+                className="object-cover transition-transform duration-300 group-hover:scale-105"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              />
+            ) : (
+              <div className="absolute inset-0 flex items-center justify-center">
+                <span className="text-5xl font-bold text-brand/40">T402</span>
+              </div>
+            )}
           </div>
 
           {/* Content */}

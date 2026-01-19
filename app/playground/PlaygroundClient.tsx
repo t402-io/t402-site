@@ -202,34 +202,55 @@ function CheckCircleIcon({ className = "" }: { className?: string }) {
   );
 }
 
-// Chain options
+// Chain options - supports all 10 T402 chains
 const chains = [
-  { id: "base", name: "Base", chainId: 8453, color: "#0052FF" },
-  { id: "ethereum", name: "Ethereum", chainId: 1, color: "#627EEA" },
-  { id: "arbitrum", name: "Arbitrum", chainId: 42161, color: "#28A0F0" },
-  { id: "polygon", name: "Polygon", chainId: 137, color: "#8247E5" },
+  // EVM Chains
+  { id: "base", name: "Base", network: "eip155:8453", color: "#0052FF", type: "evm" as const },
+  { id: "ethereum", name: "Ethereum", network: "eip155:1", color: "#627EEA", type: "evm" as const },
+  { id: "arbitrum", name: "Arbitrum", network: "eip155:42161", color: "#28A0F0", type: "evm" as const },
+  { id: "ink", name: "Ink", network: "eip155:57073", color: "#7B3FE4", type: "evm" as const },
+  { id: "berachain", name: "Berachain", network: "eip155:80094", color: "#FF6B35", type: "evm" as const },
+  { id: "unichain", name: "Unichain", network: "eip155:130", color: "#FF007A", type: "evm" as const },
+  { id: "polygon", name: "Polygon", network: "eip155:137", color: "#8247E5", type: "evm" as const },
+  // Non-EVM Chains
+  { id: "ton", name: "TON", network: "ton:-239", color: "#0098EA", type: "ton" as const },
+  { id: "tron", name: "TRON", network: "tron:0x2b6653dc", color: "#FF0013", type: "tron" as const },
+  { id: "solana", name: "Solana", network: "solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp", color: "#9945FF", type: "solana" as const },
 ];
 
 const tokens = [
-  { id: "USDC", name: "USD Coin", address: "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48" },
-  { id: "USDT", name: "Tether USD", address: "0xdAC17F958D2ee523a2206206994597C13D831ec7" },
+  { id: "USDT", name: "Tether USD" },
+  { id: "USDT0", name: "USDT0 (Omnichain)" },
 ];
 
 // Helper to generate payment header
 function generatePaymentHeader(config: PaymentConfig): string {
   const chain = chains.find((c) => c.id === config.chain);
-  const token = tokens.find((t) => t.id === config.token);
+
+  // Get appropriate payTo address based on chain type
+  const getPayToAddress = () => {
+    switch (chain?.type) {
+      case "ton":
+        return "EQ5d11d21276ac6b5efdf179e654ff0c6eee34e0abfa263a";
+      case "tron":
+        return "TT1MqNNj2k5qdGA6nrrCodW6oyHbbAreQ5";
+      case "solana":
+        return "8GGtWHRQ1wz5gDKE2KXZLktqzcfV1CBqSbeUZjA7hoWL";
+      default:
+        return "0xC88f67e776f16DcFBf42e6bDda1B82604448899B";
+    }
+  };
 
   const payload = {
     version: "1",
     accepts: [
       {
         scheme: "exact",
-        network: `eip155:${chain?.chainId || 8453}`,
+        network: chain?.network || "eip155:8453",
         maxAmountRequired: (parseFloat(config.price.replace("$", "")) * 1000000).toString(),
         resource: config.resource,
-        payTo: "0x742d35Cc6634C0532925a3b844Bc9e7595f0bEb2",
-        token: token?.address || tokens[0].address,
+        payTo: getPayToAddress(),
+        token: config.token,
       },
     ],
   };

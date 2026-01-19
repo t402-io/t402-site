@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "motion/react";
 
 // T402 Logo component
@@ -110,6 +111,13 @@ const navLinks = [
 
 export function NavBar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const pathname = usePathname();
+
+  // Check if a link is active (exact match or starts with path for nested routes)
+  const isActive = (href: string) => {
+    if (href === "/") return pathname === "/";
+    return pathname === href || pathname.startsWith(`${href}/`);
+  };
 
   return (
     <nav
@@ -132,18 +140,26 @@ export function NavBar() {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex md:items-center md:gap-1">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                target={link.external ? "_blank" : undefined}
-                rel={link.external ? "noopener noreferrer" : undefined}
-                className="flex items-center gap-1 rounded-lg px-3 py-2 text-sm font-medium text-foreground-secondary transition-colors hover:bg-background-secondary hover:text-foreground"
-              >
-                {link.label}
-                {link.external && <ExternalLinkIcon />}
-              </Link>
-            ))}
+            {navLinks.map((link) => {
+              const active = !link.external && isActive(link.href);
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  target={link.external ? "_blank" : undefined}
+                  rel={link.external ? "noopener noreferrer" : undefined}
+                  aria-current={active ? "page" : undefined}
+                  className={`flex items-center gap-1 rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
+                    active
+                      ? "bg-background-secondary text-brand"
+                      : "text-foreground-secondary hover:bg-background-secondary hover:text-foreground"
+                  }`}
+                >
+                  {link.label}
+                  {link.external && <ExternalLinkIcon />}
+                </Link>
+              );
+            })}
           </div>
 
           {/* Desktop CTA */}
@@ -189,19 +205,27 @@ export function NavBar() {
             className="overflow-hidden border-t border-border bg-background md:hidden"
           >
             <div className="space-y-1 px-4 py-4">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  target={link.external ? "_blank" : undefined}
-                  rel={link.external ? "noopener noreferrer" : undefined}
-                  className="flex items-center justify-between rounded-lg px-3 py-3 text-base font-medium text-foreground-secondary transition-colors hover:bg-background-secondary hover:text-foreground"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  {link.label}
-                  {link.external && <ExternalLinkIcon />}
-                </Link>
-              ))}
+              {navLinks.map((link) => {
+                const active = !link.external && isActive(link.href);
+                return (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    target={link.external ? "_blank" : undefined}
+                    rel={link.external ? "noopener noreferrer" : undefined}
+                    aria-current={active ? "page" : undefined}
+                    className={`flex items-center justify-between rounded-lg px-3 py-3 text-base font-medium transition-colors ${
+                      active
+                        ? "bg-background-secondary text-brand"
+                        : "text-foreground-secondary hover:bg-background-secondary hover:text-foreground"
+                    }`}
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    {link.label}
+                    {link.external && <ExternalLinkIcon />}
+                  </Link>
+                );
+              })}
 
               <div className="my-4 border-t border-border" />
 
